@@ -69,7 +69,7 @@ st.markdown("""
 st.markdown("""
     <div class="header-container">
         <div class="header-title">🦠 Confirmed H1N1 Influenza Tracker</div>
-        <div class="header-subtitle">Ernakulam District • Real-Time Spatial Risk Analysis & Swine Flu Outbreak Surveillance</div>
+        <div class="header-subtitle">Ernakulam District • Real-Time Spatial Risk Analysis & Swine Flu Surveillance</div>
     </div>
 """, unsafe_allow_html=True)
 
@@ -141,7 +141,7 @@ map_style = st.sidebar.selectbox(
 
 # Threshold tuned for H1N1 case distributions
 hotspot_threshold = st.sidebar.slider(
-    "Hotspot Outbreak Threshold",
+    "Hotspot Threshold",
     min_value=5,
     max_value=80,
     value=25,
@@ -165,7 +165,7 @@ max_row = df_cases.loc[df_cases['Number of Cases'].idxmax()]
 col_kpi1.metric("Total Confirmed H1N1 Cases", f"{total_cases:,}")
 col_kpi2.metric("Total Health Blocks", total_blocks)
 col_kpi3.metric(f"High Risk Blocks (>{hotspot_threshold})", hotspot_count, delta=f"{(hotspot_count/total_blocks)*100:.0f}% of district", delta_color="inverse")
-col_kpi4.metric("Highest Outbreak Cluster", f"{max_row['Number of Cases']} Cases", delta=max_row['Health Blocks'], delta_color="off")
+col_kpi4.metric("Highest Cluster", f"{max_row['Number of Cases']} Cases", delta=max_row['Health Blocks'], delta_color="off")
 
 st.markdown("<br>", unsafe_allow_html=True)
 
@@ -231,12 +231,12 @@ with left_col:
             fill_color=fill_code,
             fill_opacity=0.85 if is_hotspot else 0.45,
             weight=2 if is_hotspot else 1,
-            tooltip=f"<b>{'⚠️ OUTBREAK HOTSPOT: ' if is_hotspot else ''}{block_name}</b><br>Cases: {cases}",
+            tooltip=f"<b>{'⚠️ HOTSPOT: ' if is_hotspot else ''}{block_name}</b><br>Cases: {cases}",
             popup=folium.Popup(
                 f"<div style='font-family: sans-serif; min-width: 140px;'>"
                 f"<h4 style='margin:0; color:{color_code};'>{block_name}</h4>"
                 f"<hr style='margin:6px 0; border:0; border-top:1px solid #ccc;'>"
-                f"<b>Status:</b> {'⚠️ High Risk Outbreak Zone' if is_hotspot else '✅ Moderate/Low Risk'}<br>"
+                f"<b>Status:</b> {'⚠️ High Risk Zone' if is_hotspot else '✅ Moderate/Low Risk'}<br>"
                 f"<b>Confirmed H1N1 Cases:</b> <span style='font-size:14px; font-weight:bold;'>{cases}</span>"
                 f"</div>", 
                 max_width=250
