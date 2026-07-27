@@ -16,28 +16,9 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS: Injects styling AND completely hides GitHub icon, Fork menu, & headers
 st.markdown("""
     <style>
-        /* 1. Hide Streamlit Top Bar, GitHub Icon, & Fork Menu */
-        header[data-testid="stHeader"] {
-            visibility: hidden !important;
-            height: 0px !important;
-        }
-        div[data-testid="stToolbar"] {
-            visibility: hidden !important;
-            height: 0px !important;
-        }
-        #MainMenu {
-            visibility: hidden !important;
-        }
-        footer {
-            visibility: hidden !important;
-        }
-        
-        /* 2. Page Styling */
         .main { background-color: #f8f9fa; }
-        
         [data-testid="stMetricValue"] {
             font-size: 28px !important;
             font-weight: 700 !important;
@@ -50,10 +31,8 @@ st.markdown("""
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
-        
-        /* 3. Header Banner */
         .header-container {
-            background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
             padding: 24px;
             border-radius: 14px;
             color: white;
@@ -61,7 +40,7 @@ st.markdown("""
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
         }
         .header-title { font-size: 30px; font-weight: 800; margin: 0; }
-        .header-subtitle { font-size: 15px; color: #c7d2fe; margin-top: 5px; }
+        .header-subtitle { font-size: 15px; color: #93c5fd; margin-top: 5px; }
     </style>
 """, unsafe_allow_html=True)
 
